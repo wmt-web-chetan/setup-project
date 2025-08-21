@@ -1,0 +1,31 @@
+/* Styles to hide unwanted HTML output */
+.contract-agreement-wrapper img[src^="data:image"] {
+    display: none;
+  }
+  
+  .contract-agreement-wrapper .html-output {
+    display: none;
+  }
+  
+  /* Hide any p tags containing "TRY COPY CONTENT FROM A WORD AND PASTE HERE" */
+  .contract-agreement-wrapper p:contains("TRY COPY CONTENT FROM A WORD") {
+    display: none;
+  }
+  
+  /* Add custom styles for the contract agreement section */
+  .contract-agreement-wrapper {
+    padding: 15px;
+    background-color: #1f1f1f;
+    border-radius: 8px;
+  }
+  
+  /* Fix scrolling issues in the modal */
+  .modalWrapperBox .ant-modal-body {
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+  
+  /* Make sure base64 encoded images don't appear */
+  img[src*="base64"] {
+    display: none !important;
+  }

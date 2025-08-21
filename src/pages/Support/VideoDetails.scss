@@ -1,0 +1,22 @@
+/* Custom styles for video player */
+.video-container:hover .video-controls {
+    opacity: 1;
+  }
+  
+  .video-controls {
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Custom styles for Ant Design components */
+  .ant-tooltip-inner {
+    background-color: #1f2937 !important;
+    border: 1px solid #374151 !important;
+  }
+  
+  /* Ensure icons are properly centered in buttons */
+  .ant-btn-icon-only {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  

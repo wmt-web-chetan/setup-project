@@ -1,0 +1,180 @@
+/* Custom styles for the user management page */
+.custom-table .ant-table {
+    background: transparent !important;
+  }
+  
+  .custom-table .ant-table-thead > tr > th {
+    color: #ffffff !important;
+    font-weight: 600;
+    border-bottom: 2px solid #373737;
+    border-right: none;
+    padding: 16px;
+    position: relative;
+  }
+  
+  .custom-table .ant-table-thead > tr > th:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 25%;
+    height: 50%;
+    width: 2px;
+    background-color: #242424;
+  }
+  
+  .custom-table .ant-table-tbody > tr > td {
+    border-bottom: 1px solid #373737;
+    border-right: none;
+    padding: 16px;
+    position: relative;
+  }
+  
+  .custom-table .ant-table-tbody > tr > td:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 25%;
+    height: 50%;
+    width: 2px;
+    background-color: #373737;
+  }
+  
+  .custom-table .ant-table-tbody > tr:hover > td {
+    background-color: #2a2a2a !important;
+  }
+  
+  .custom-table .ant-pagination {
+    text-align: right;
+    margin-right: 16px;
+  }
+  
+  .custom-table .ant-pagination-item {
+    background-color: #2a2a2a;
+    border-color: #373737;
+  }
+  
+  .custom-table .ant-pagination-item-active {
+    background-color: #ff6d00;
+    border-color: #ff6d00;
+  }
+  
+  .custom-table .ant-pagination-item-active a {
+    color: white;
+  }
+  
+  .custom-table .ant-pagination-prev button,
+  .custom-table .ant-pagination-next button {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border-color: #373737;
+  }
+  
+  .custom-table .ant-empty-description {
+    color: #8c8c8c;
+  }
+  
+  .user-modal .ant-modal-content {
+    background-color: #1f1f1f;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .user-modal .ant-modal-header {
+    background-color: #1f1f1f;
+    border-bottom: 1px solid #373737;
+    padding: 16px 24px;
+  }
+  
+  .user-modal .ant-modal-title {
+    color: #ffffff;
+  }
+  
+  .user-modal .ant-modal-close {
+    color: #8c8c8c;
+  }
+  
+  .user-modal .ant-modal-body {
+    padding: 24px;
+  }
+  
+  .user-modal .ant-form-item-label > label {
+    color: #d9d9d9;
+  }
+  
+  .user-modal .ant-select-selector {
+    background-color: #171717 !important;
+    border-color: #373737 !important;
+  }
+  
+  .user-modal .ant-select-selection-item {
+    color: #d9d9d9;
+  }
+  
+  .user-modal .ant-select-dropdown {
+    background-color: #1f1f1f;
+    border: 1px solid #373737;
+  }
+  
+  .user-modal .ant-select-item {
+    color: #d9d9d9;
+  }
+  
+  .user-modal .ant-select-item-option-selected {
+    background-color: #2a2a2a;
+  }
+  
+  .user-modal .ant-select-item-option-active {
+    background-color: #2a2a2a;
+  }
+  
+
+  /* Table container rounded corners */
+  .custom-table .ant-table-container {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* Make sure the bottom of the table is also rounded */
+  .custom-table .ant-table-container .ant-table-body {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .custom-table .ant-table-pagination {
+    margin: 16px 0;
+  }
+  
+  /* Add this to your UserManagement.scss file */
+
+.user-management-table {
+    .ant-table {
+      background-color: transparent;
+      border-bottom: none;
+    }
+    
+    .ant-table-container {
+      border-bottom: none;
+    }
+    
+    .ant-table-cell {
+      border-bottom: 1px solid #373737;
+    }
+    
+    .ant-table-tbody > tr:last-child > td {
+      border-bottom: none;
+    }
+    
+    .ant-table-thead > tr > th {
+      border-bottom: 1px solid #373737;
+    }
+    
+    /* Remove any borders from the footer/pagination area */
+    .ant-table-footer {
+      border-top: none;
+    }
+    
+    .ant-pagination {
+      margin-top: 16px;
+    }
+  }

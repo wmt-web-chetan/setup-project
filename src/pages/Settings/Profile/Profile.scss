@@ -1,0 +1,22 @@
+.profile-otp-setting{
+    .ant-otp{
+        .ant-otp-input{
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+}
+.ant-select-disabled{
+    .ant-select-selection-item{
+        color: white;
+    }
+    .ant-select-arrow{
+        display: none;
+    }
+}
+
+.ant-input-disabled{
+    .ant-input-suffix{
+        display: none;
+    }
+}

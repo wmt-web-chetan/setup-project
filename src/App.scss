@@ -1,0 +1,471 @@
+// antd configuration
+
+.ant-btn-variant-solid:disabled {
+  border: none;
+}
+
+.px-wrapper {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @media (min-width: 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  @media (min-width: 1024px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  @media (min-width: 1280px) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  @media only screen and (min-width: 1536px) and (max-width: 1790px) {
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
+  @media (min-width: 1536px) {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+.px-header-wrapper {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  @media (min-width: 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  @media (min-width: 1024px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  @media (min-width: 1280px) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  @media only screen and (min-width: 1536px) and (max-width: 1790px) {
+    padding-left: 7rem;
+    padding-right: 7rem;
+  }
+  @media (min-width: 1536px) {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+.px-lg-wrapper {
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  @media (min-width: 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  @media (min-width: 1280px) {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  @media (min-width: 1536px) and (max-width: 1790px) {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  @media (min-width: 1791px) {
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+}
+
+.ant-btn-variant-outlined:disabled {
+  border: none;
+}
+.ant-typography-secondary {
+  color: #6d6d6d !important;
+}
+
+/* CustomScrollbar.css */
+
+/* Custom scrollbar styling */
+.ant-table-body::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.ant-table-body::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.ant-table-body::-webkit-scrollbar-thumb {
+  background: #373737;
+  border-radius: 6px;
+}
+
+.ant-table-body::-webkit-scrollbar-thumb:hover {
+  background: #373737;
+  border-radius: 6px;
+}
+
+/* Firefox scrollbar styling */
+.ant-table-body {
+  scrollbar-width: thin;
+  scrollbar-color: #373737 transparent;
+}
+
+.ant-select-multiple {
+  .ant-select-selector {
+    padding: 7px !important;
+  }
+}
+/* Make sure the table is responsive */
+@media (max-width: 768px) {
+  .roles-table {
+    font-size: 14px;
+  }
+
+  .roles-table .ant-table-thead > tr > th,
+  .roles-table .ant-table-tbody > tr > td {
+    padding: 10px;
+  }
+}
+
+//apply to center spin
+.loadingClass {
+  height: calc(100vh - 241px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Custom styles for the user management page */
+.custom-table .ant-table {
+  background: transparent !important;
+}
+
+.custom-table .ant-table-thead > tr > th {
+  color: #ffffff !important;
+  font-weight: 600;
+  border-bottom: 2px solid #373737;
+  border-right: none;
+  padding: 16px;
+  position: relative;
+}
+
+.custom-table .ant-table-thead > tr > th:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 50%;
+  width: 2px;
+  background-color: #242424;
+}
+
+.custom-table .ant-table-tbody > tr > td {
+  border-bottom: 1px solid #373737;
+  border-right: none;
+  padding: 16px;
+  position: relative;
+}
+
+.custom-table .ant-table-tbody > tr > td:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 50%;
+  width: 2px;
+  background-color: #373737;
+}
+
+.custom-table .ant-table-tbody > tr:hover > td {
+  background-color: #2a2a2a !important;
+}
+
+.custom-table .ant-pagination {
+  text-align: right;
+  margin-right: 16px;
+}
+
+.custom-table .ant-pagination-item {
+  background-color: #2a2a2a;
+  border-color: #373737;
+}
+
+.custom-table .ant-pagination-item-active {
+  background-color: #ff6d00;
+  border-color: #ff6d00;
+}
+
+.custom-table .ant-pagination-item-active a {
+  color: white;
+}
+
+.custom-table .ant-pagination-prev button,
+.custom-table .ant-pagination-next button {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  border-color: #373737;
+}
+
+.custom-table .ant-empty-description {
+  color: #8c8c8c;
+}
+
+/* Table container rounded corners */
+.custom-table .ant-table-container {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Make sure the bottom of the table is also rounded */
+.custom-table .ant-table-container .ant-table-body {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  overflow: hidden;
+}
+
+.custom-table .ant-table-pagination {
+  margin: 16px 0;
+}
+
+.filterSelection > .ant-select-selector {
+  border-radius: 50px !important;
+}
+
+//for modal styling
+.modalWrapperBox {
+  .ant-modal-content {
+   
+    padding: 20px 20px;
+    border-radius: 8px;
+    .ant-modal-header {
+      padding: 0px 10px 0px 10px;
+      margin-bottom: 0px;
+    }
+    .ant-modal-body {
+      .wrapperFormContent {
+        padding: 10px 10px;
+        // height: 60vh;
+        overflow: hidden;
+        overflow-y: auto;
+        // border-radius: 0 0 10px 10px;
+        // display: flex;
+        // flex-wrap: wrap;
+        // justify-content: center;
+      }
+      .wrapperFooter {
+        padding: 20px 0px 0px 24px;
+        border-top: 2px solid #373737;
+      }
+    }
+    .ant-modal-footer {
+      display: none;
+    }
+  }
+}
+
+/* Add these styles to your existing UserManagement.scss file */
+
+.flex-wrap-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flex-wrap-pagination .ant-pagination-item,
+.flex-wrap-pagination .ant-pagination-prev,
+.flex-wrap-pagination .ant-pagination-next,
+.flex-wrap-pagination .ant-pagination-jump-next,
+.flex-wrap-pagination .ant-pagination-jump-prev {
+  margin-bottom: 8px;
+}
+
+/* Custom styles for dark theme Tree component */
+.custom-dark-tree {
+  background-color: transparent !important;
+}
+
+.custom-dark-tree .ant-tree-node-content-wrapper {
+  color: white !important;
+}
+
+/* Remove all backgrounds */
+.custom-dark-tree .ant-tree-node-content-wrapper:hover,
+.custom-dark-tree .ant-tree-node-content-wrapper.ant-tree-node-selected,
+.custom-dark-tree .ant-tree-node-selected,
+.custom-dark-tree .ant-tree-node-selected::before,
+.custom-dark-tree .ant-tree-treenode,
+.custom-dark-tree .ant-tree-treenode-selected,
+.custom-dark-tree .ant-tree-treenode-selected::before {
+  background-color: transparent !important;
+}
+
+/* Remove default switcher icons */
+.custom-dark-tree .ant-tree-switcher {
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: none !important;
+}
+
+/* Hide default arrow icon but keep the structure for our custom lines */
+.custom-dark-tree .ant-tree-switcher-icon {
+  display: none !important;
+}
+
+/* Set selected item text color */
+.custom-dark-tree .ant-tree-node-selected .ant-tree-title {
+  color: #FF6D00 !important;
+  z-index: 1000;
+}
+.ant-tree-title{
+  z-index: 10000;
+}
+
+/* Subcategory background styling */
+.custom-dark-tree .subcategory-node .ant-tree-node-content-wrapper {
+  // background-color: #171717 !important;
+  border-radius: 4px;
+  padding: 4px 8px !important;
+}
+
+/* Hide default tree lines */
+.custom-dark-tree .ant-tree-show-line .ant-tree-indent-unit::before,
+.custom-dark-tree .ant-tree-show-line .ant-tree-switcher::before,
+.custom-dark-tree .ant-tree-indent-unit::before {
+  display: none !important;
+}
+
+/* Styles for the tree container */
+// .tree-container {
+//   position: relative;
+//   height: 100%;
+//   max-height: 100%;
+//   overflow-y: auto;
+//   scrollbar-width: thin;
+//   scrollbar-color: #373737 #1f1f1f;
+// }
+
+/* Custom scrollbar styling */
+.tree-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+// .tree-container::-webkit-scrollbar-track {
+//   background: #1f1f1f;
+// }
+
+// .tree-container::-webkit-scrollbar-thumb {
+//   background-color: #373737;
+//   border-radius: 10px;
+// }
+
+/* Ensure the tree takes up appropriate space */
+.tree-container .ant-tree {
+  height: 100%;
+  background: transparent;
+}
+
+/* Category nodes */
+.custom-dark-tree .category-node {
+  position: relative;
+  padding-bottom: 8px;
+}
+
+/* Vertical line for categories with children */
+.custom-dark-tree .category-node:has(+ .subcategory-node)::after,
+.custom-dark-tree .category-node:has(+ .category-node:has(.subcategory-node))::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  left: 12px;
+  width: 1px;
+  height: calc(100% - 24px);
+  background-color: #373737;
+  z-index: 0;
+}
+
+/* Ensure the last category with children has a correct line height */
+.custom-dark-tree .category-node:last-of-type:has(.subcategory-node)::after {
+  height: 20px;
+}
+
+/* Basic subcategory connection line */
+.custom-dark-tree .subcategory-node {
+  position: relative;
+  padding-left: 24px;
+  margin-left: 0;
+  margin-bottom: 8px;
+}
+
+/* Apply all the curved connection styles */
+.custom-dark-tree .subcategory-node::before {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 7px;
+  width: 24px;
+  height: 100%;
+  border-left: 1px solid #373737;
+  border-bottom: 1px solid #373737;
+  border-bottom-left-radius: 8px;
+  transform: translateY(-50%);
+}
+
+/* Hide the ant-tree-indent to prevent default indentation */
+.custom-dark-tree .ant-tree-indent {
+  display: none;
+}
+
+/* Ensure proper alignment of main category content */
+.custom-dark-tree .category-node > .ant-tree-node-content-wrapper {
+  padding-left: 0 !important;
+}
+
+@media (min-width: 768px) {
+  .flex-wrap-pagination {
+    justify-content: flex-end;
+  }
+}
+
+/* You might also want to add some padding to the pagination container */
+.ant-table-pagination.ant-pagination {
+  padding: 16px;
+}
+
+/* Ensure the "showing results" text has proper spacing */
+.ant-table-pagination .text-grayText {
+  margin-bottom: 12px;
+}
+
+// .ant-tooltip .ant-tooltip-inner {
+//   padding: 0 !important;
+// }
+
+.ant-color-picker-trigger {
+  display: flex;
+  align-items: center;
+}
+
+.ant-pagination-item-active {
+  a{
+    &:hover{
+      color: #ffffff !important;
+      opacity: 0.7 !important;
+    }
+  }
+}
+
+.ant-otp-input-wrapper{
+  flex: 1 !important;
+}
+

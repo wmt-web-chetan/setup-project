@@ -1,0 +1,140 @@
+/* ContactDetails.scss */
+
+.contact-details-sidebar {
+  overflow-y: hidden;
+  background-color: var(--gray);
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-profile {
+  padding: 1.5rem 1rem 0rem 1rem;
+}
+
+/* Online status indicator on avatar */
+.online-indicator {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #52c41a;
+  bottom: 0;
+  right: 0;
+  border: 2px solid var(--gray);
+}
+
+/* Custom styling for background colors */
+.bg-primaryOpacity {
+  background-color: rgba(255, 109, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* Scrollbar styling for members list */
+// .members-list {
+//   scrollbar-width: thin;
+//   scrollbar-color: #373737 #171717;
+// }
+
+// .members-list::-webkit-scrollbar {
+//   width: 5px;
+// }
+
+// .members-list::-webkit-scrollbar-track {
+//   background: #171717;
+// }
+
+// .members-list::-webkit-scrollbar-thumb {
+//   background: #373737;
+//   border-radius: 10px;
+// }
+
+// .members-list::-webkit-scrollbar-thumb:hover {
+//   background: #FF6D00;
+// }
+
+/* Custom switch styling */
+.custom-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #373737;
+}
+
+.custom-switch::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+  background-color: #8c8c8c;
+  transition: all 0.3s ease;
+}
+
+.custom-switch.active::after {
+  left: 22px;
+  background-color: #FF6D00;
+}
+
+/* Mobile optimizations */
+@media (max-width: 767px) {
+  .contact-details-sidebar {
+    width: 100% !important;
+    z-index: 50;
+    height: 100% !important;
+  }
+  
+  .details-content {
+    height: calc(100vh - 92px) !important;
+    overflow-y: auto;
+  }
+}
+
+/* Animation for sidebar entry from right */
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* Apply animations */
+.contact-details-wrapper {
+  animation: slideInRight 0.3s ease-out;
+  will-change: transform;
+}
+
+.ant-badge.ant-badge-status .ant-badge-status-text {
+  font-size: 10px;
+}
+
+// /* Fix for the specific screen size issue */
+// @media (max-width: 1366px) {
+//   .flex-grow.flex.overflow-hidden.h-full {
+//     overflow: hidden;
+//     position: relative;
+//   }
+  
+//   .chat-window {
+//     transition: width 0.3s ease !important;
+//   }
+  
+//   .contact-details-wrapper {
+//     position: absolute !important;
+//     right: 0 !important;
+//     height: 100% !important;
+//     animation: none !important;
+//     transform: translateX(0) !important;
+//   }
+// }
+
+// /* Ensure proper layout at all times */
+// .flex-grow.flex.overflow-hidden.h-full {
+//   min-width: 0; /* Ensures flexbox children don't grow beyond container */
+// }
+
+// .chat-window {
+//   min-width: 0;
+//   will-change: width;
+// }

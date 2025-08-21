@@ -1,0 +1,264 @@
+/* ImageCropModal.css */
+.image-crop-modal .ant-modal-content {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .image-crop-modal .ant-modal-header {
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 16px 24px;
+  }
+  
+  .image-crop-modal .ant-modal-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+  }
+  
+  .image-crop-modal .ant-modal-body {
+    padding: 24px;
+    background: #fff;
+  }
+  
+  /* Crop container styles */
+  .crop-container {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    background: #f3f4f6;
+    border-radius: 12px;
+    overflow: hidden;
+    user-select: none;
+  }
+  
+  .crop-container:active {
+    cursor: grabbing;
+  }
+  
+  /* Crop overlay styles */
+  .crop-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+  }
+  
+  .crop-circle {
+    position: absolute;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: transparent;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Image styles */
+  .crop-image {
+    position: absolute;
+    max-width: none;
+    max-height: none;
+    user-select: none;
+    pointer-events: none;
+    transform-origin: center;
+  }
+  
+  /* Control styles */
+  .crop-controls {
+    margin-top: 20px;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  .crop-control-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .crop-control-row:last-child {
+    margin-bottom: 0;
+  }
+  
+  .crop-control-icon {
+    color: #6b7280;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  
+  .crop-control-slider {
+    flex: 1;
+  }
+  
+  .crop-control-slider .ant-slider-rail {
+    background: #e5e7eb;
+    height: 6px;
+  }
+  
+  .crop-control-slider .ant-slider-track {
+    background: #3b82f6;
+    height: 6px;
+  }
+  
+  .crop-control-slider .ant-slider-handle {
+    border: 2px solid #3b82f6;
+    width: 18px;
+    height: 18px;
+    margin-top: -6px;
+  }
+  
+  .crop-control-slider .ant-slider-handle:hover,
+  .crop-control-slider .ant-slider-handle:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  }
+  
+  /* Action button styles */
+  .crop-action-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  
+  .crop-action-buttons .ant-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    height: auto;
+    border-radius: 6px;
+    font-weight: 500;
+  }
+  
+  /* Upload area styles */
+  .crop-upload-area {
+    text-align: center;
+    padding: 48px 24px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 2px dashed #d1d5db;
+    transition: all 0.3s ease;
+  }
+  
+  .crop-upload-area:hover {
+    border-color: #3b82f6;
+    background: #f0f8ff;
+  }
+  
+  .crop-upload-area .ant-btn {
+    margin-bottom: 12px;
+  }
+  
+  .crop-upload-description {
+    color: #6b7280;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  
+  /* Footer button styles */
+  .crop-footer-buttons {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .crop-footer-buttons .ant-btn {
+    height: 44px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 16px;
+  }
+  
+  .crop-footer-buttons .ant-btn-primary {
+    background: #3b82f6;
+    border-color: #3b82f6;
+  }
+  
+  .crop-footer-buttons .ant-btn-primary:hover {
+    background: #2563eb;
+    border-color: #2563eb;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .image-crop-modal .ant-modal-content {
+      margin: 20px;
+    }
+    
+    .crop-container {
+      height: 260px;
+    }
+    
+    .crop-circle {
+      width: 200px !important;
+      height: 200px !important;
+    }
+    
+    .crop-control-row {
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .crop-control-icon {
+      align-self: flex-start;
+    }
+    
+    .crop-action-buttons {
+      flex-direction: column;
+    }
+    
+    .crop-action-buttons .ant-btn {
+      width: 100%;
+    }
+  }
+  
+  /* Loading and disabled states */
+  .crop-container.loading {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  
+  .crop-container.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  
+  /* Smooth transitions */
+  .crop-image {
+    transition: transform 0.1s ease-out;
+  }
+  
+  .crop-controls {
+    transition: opacity 0.2s ease;
+  }
+  
+  /* Custom scrollbar for modal */
+  .image-crop-modal .ant-modal-body {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db transparent;
+  }
+  
+  .image-crop-modal .ant-modal-body::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .image-crop-modal .ant-modal-body::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .image-crop-modal .ant-modal-body::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+  }
+  
+  .image-crop-modal .ant-modal-body::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }

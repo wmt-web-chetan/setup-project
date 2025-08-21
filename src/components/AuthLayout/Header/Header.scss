@@ -1,0 +1,21 @@
+.custom-gradient {
+    background: linear-gradient(
+      140deg,
+      rgb(255, 119, 0) 0%,
+      rgb(255, 119, 0) 10%,
+      rgba(239, 59, 255, 1) 50%,
+      rgb(91, 58, 236) 90%,
+      rgb(91, 58, 236) 100%
+    );
+    &:hover {
+      background: linear-gradient(
+        140deg,
+        rgb(91, 58, 236) 0%,
+        rgb(91, 58, 236) 10%,
+        rgba(239, 59, 255, 1) 50%,
+        rgb(255, 119, 0) 90%,
+        rgb(255, 119, 0) 100%
+      ) !important;
+      opacity: 0.7;
+    }
+  }

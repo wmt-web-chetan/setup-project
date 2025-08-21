@@ -1,0 +1,101 @@
+// Add your existing SCSS styles here
+
+.historyName {
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: var(--liteGray);
+  }
+}
+
+// Right shadow styling (already in your code)
+.shadowRight {
+  margin-top: 30px;
+  width: 60px;
+  height: calc(90% - 30px);
+  background: linear-gradient(90deg, #373737a4 0%, #3737379c 100%);
+}
+
+// Bottom shadow styling for the scroll area
+.shadowBottom {
+  height: 60px;
+  width: 100%;
+  background: linear-gradient(0deg, #373737a4 0%, #3737379c 100%);
+}
+
+.sidebarHistory::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebarHistory {
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-width: none; /* For Firefox */
+}
+
+// Add this to your existing Genie.scss file
+
+.historyName {
+  position: relative;
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--liteGray);
+  }
+}
+
+// Style for the dropdown menu
+.ant-dropdown {
+  .ant-dropdown-menu {
+    background-color: var(--darkGray);
+    border: 1px solid var(--liteGray);
+    border-radius: 8px;
+    padding: 4px 0;
+
+    .ant-dropdown-menu-item {
+      color: white;
+      padding: 8px 16px;
+
+      &:hover {
+        background-color: var(--liteGray);
+      }
+    }
+  }
+}
+
+// Icon style
+.icon-more-vertical:before {
+  content: "\2026"; // Ellipsis character
+  transform: rotate(90deg);
+  display: inline-block;
+}
+
+.chatArea {
+  // height: calc(90% - 6rem);
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-width: none; /* For Firefox */
+}
+
+.chatArea::-webkit-scrollbar {
+  display: none;
+}
+
+.chatInput {
+  height: 6rem;
+}
+
+.htmlMessage {
+  a {
+    display: inline-block;
+    background-color: #373737;
+    color: #5a76ff;
+    padding: 6px 10px;
+    margin: 10px 0px;
+    border-radius: 16px;
+    font-size: 14px;
+  }
+}

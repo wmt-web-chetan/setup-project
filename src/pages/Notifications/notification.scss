@@ -1,0 +1,29 @@
+.custom-tabs .ant-tabs-tabpane {
+    padding: 0 !important;
+  }
+
+  .ant-tabs-tab{
+    padding: 7px !important;
+    margin: 0px !important;
+  }
+
+  .ant-popover .ant-popover-inner{
+    padding: 0px !important;
+  }
+ 
+  .notification-popover .ant-popover-inner {
+    background-color: #1F1F1F;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    z-index: 1000; /* Ensure Popover is above other elements */
+  }
+  
+  .notification-popover .ant-popover-arrow {
+    border-color: #1F1F1F !important;
+    background-color: #1F1F1F !important;
+  }
+  
+  .border-liteGray.bg-gray {
+    pointer-events: auto !important; /* Ensure button is clickable */
+  }
+  

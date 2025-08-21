@@ -1,0 +1,219 @@
+/* Calendar.css - Custom styles for FullCalendar */
+
+/* Set all calendar border colors to match the theme */
+.fc-theme-standard .fc-scrollgrid,
+.fc-theme-standard .fc-scrollgrid-section > *,
+.fc-theme-standard th,
+.fc-theme-standard td,
+.fc-theme-standard .fc-list,
+.fc-theme-standard .fc-divider {
+  border-color: var(--liteGray) !important;
+}
+
+/* Style for calendar cell borders */
+.fc-daygrid-day {
+  border-color: var(--liteGray) !important;
+}
+
+/* Style for header borders */
+.fc-col-header-cell {
+  border-color: var(--liteGray) !important;
+}
+
+/* Style for week number cell borders */
+.fc-timegrid-slot,
+.fc-timegrid-slot-lane {
+  border-color: var(--liteGray) !important;
+}
+
+/* Style for the time grid borders */
+.fc-timegrid-divider {
+  border-color: var(--liteGray) !important;
+}
+
+/* Calendar container styles */
+.calendar-container .fc-theme-standard {
+  --fc-border-color: var(--liteGray);
+  --fc-page-bg-color: transparent;
+  --fc-neutral-bg-color: rgba(208, 208, 208, 0.1);
+  --fc-list-event-hover-bg-color: rgba(208, 208, 208, 0.1);
+}
+
+/* Calendar day cell styles */
+.calendar-day-cell {
+  background-color: transparent;
+}
+
+/* Calendar today highlight */
+.fc .fc-daygrid-day.fc-day-today,
+.fc .fc-timegrid-col.fc-day-today {
+  background-color: rgba(255, 109, 0, 0.1) !important;
+}
+
+/* Button styling for consistency with theme */
+.fc .fc-button-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.fc .fc-button-primary:hover {
+  background-color: var(--primary);
+  opacity: 0.9;
+}
+
+/* Calendar event styling */
+.fc-event {
+  border-radius: 4px;
+}
+
+/* Time grid styling */
+.fc-timegrid-slot-label {
+  color: var(--grayText);
+}
+
+/* Custom Calendar Header Styling */
+.custom-calendar-header {
+  background-color: #171717;
+  border-bottom: 1px solid var(--liteGray);
+}
+
+.custom-calendar-header .ant-typography {
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+.calendar-nav-button {
+  color: var(--grayText);
+  border: 1px solid var(--liteGray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+}
+
+.calendar-nav-button:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.search-input {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 30px !important;
+  background-color: #171717 !important;
+  border: 1px solid var(--liteGray) !important;
+}
+
+.search-input input {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+.search-input .ant-input-prefix {
+  color: var(--grayText);
+  margin-right: 8px;
+}
+
+.create-meeting-btn {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  border-radius: 30px !important;
+  padding: 0 20px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.create-meeting-btn:hover {
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .fc .fc-toolbar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .fc .fc-toolbar-title {
+    font-size: 1.2rem;
+  }
+
+  .custom-calendar-header {
+    padding: 12px !important;
+  }
+
+  .custom-calendar-header .ant-col {
+    justify-content: center;
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+
+.fc-theme-standard .fc-popover {
+   background-color: #171717;
+   border-color: var(--liteGray);
+   border-radius: 10px;
+}
+
+.fc-theme-standard .fc-popover-header{
+  background-color: #171717;
+}
+
+.fc .fc-daygrid-day-top {
+  flex-direction: column;
+}
+
+.ant-select-selector{
+  background-color: var(--gray) !important;
+}
+
+
+.fc .fc-timegrid-slot{
+  height: 70px;
+}
+
+.fc-timegrid-more-link{
+  background-color: var(--liteGray);
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center;
+}
+
+.fc-theme-standard .fc-popover{
+  right: 10px !important;
+  z-index: 10 ;
+  left: 0% !important;
+  width: 100%;
+  
+}
+
+/* Fix for scrollbar in Firefox and other browsers */
+.fc-scroller {
+  scrollbar-width: thin;
+  scrollbar-color: #373737 #171717;
+}
+
+.fc-scroller::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.fc-scroller::-webkit-scrollbar-track {
+  background: #171717;
+}
+
+.fc-scroller::-webkit-scrollbar-thumb {
+  background: #373737;
+  border-radius: 3px;
+}
+
+.fc-scroller::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

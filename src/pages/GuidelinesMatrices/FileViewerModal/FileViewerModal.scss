@@ -1,0 +1,32 @@
+/* FileViewerModal.scss */
+.file-viewer-modal {
+    .ant-modal-content {
+      padding: 0 !important;
+    }
+  
+    .ant-modal-close {
+    //   top: 16px;
+    //   right: 16px;
+    }
+  
+    .ant-modal-body {
+      padding: 0 !important;
+    }
+  }
+  
+//   /* Ensure these selectors are outside the scoped class to work globally if needed */
+//   .h-full {
+//     height: 100%;
+//   }
+  
+//   .block {
+//     display: block;
+//   }
+  
+//   .mb-4 {
+//     margin-bottom: 16px;
+//   }
+  
+//   .text-center {
+//     text-align: center;
+//   }

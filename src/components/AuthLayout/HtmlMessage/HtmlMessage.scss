@@ -1,0 +1,200 @@
+/* htmlMessage.css */
+.html-message {
+  width: 100%;
+  padding-top: 0.25rem;
+}
+
+/* Heading styles */
+.html-message h1 {
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.html-message h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.html-message h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* Paragraph styles */
+.html-message p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* List styles */
+.html-message ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.html-message ol {
+  list-style-type: decimal;
+  padding-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.html-message li {
+  margin-bottom: 0.5rem;
+}
+
+/* Source citation styles */
+.html-message .source-citation {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.html-message .source-citation a {
+  text-decoration: none;
+}
+
+.html-message .source-citation a:hover {
+  text-decoration: underline;
+}
+
+/* Text formatting */
+.html-message strong,
+.html-message b {
+  font-weight: 600;
+}
+
+.html-message em,
+.html-message i {
+  font-style: italic;
+}
+
+.html-message code {
+  font-family: monospace;
+  background-color: #f5f5f5;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+/* Table styles */
+.html-message table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.html-message th,
+.html-message td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.html-message th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+/* Blockquote styles */
+.html-message blockquote {
+  border-left: 4px solid #ddd;
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  color: #555;
+}
+
+.html-message {
+  a {
+    display: inline-block;
+    background-color: #373737;
+    color: #5a76ff;
+    padding: 6px 10px;
+    margin: 10px 0px;
+    border-radius: 16px;
+    font-size: 14px;
+  }
+}
+
+.linkBox {
+  a {
+    display: inline-block;
+    background-color: #373737;
+    color: #5a76ff;
+    padding: 6px 10px;
+    margin: 10px 0px;
+    border-radius: 16px;
+    font-size: 14px;
+  }
+}
+
+// HtmlMessage.scss
+.html-message {
+  &.markdown-content {
+    line-height: 1.6;
+    color: #ffffff;
+
+    .markdown-main-header {
+      font-size: 1.875rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0rem 0;
+      color: #ffffff;
+      // border-bottom: 3px solid #e9ecef;
+      padding-bottom: 0.75rem;
+    }
+
+    .markdown-sub-header {
+      font-size: 1.5rem;
+      font-weight: 650;
+      margin: 1.25rem 0 0.75rem 0;
+      color: #ffffff;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 0.6rem;
+    }
+
+    .markdown-header {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 1rem 0 0rem 0;
+      color: #ffffff;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 0.5rem;
+    }
+
+    .markdown-paragraph {
+      margin: 0.75rem 0;
+      text-align: justify;
+    }
+
+    .markdown-bullet {
+      margin: 0.5rem 0;
+      padding-left: 0.5rem;
+      list-style-type: disc;
+      margin-left: 1.5rem;
+
+      strong {
+        font-weight: 600;
+        color: #ffffff;
+      }
+    }
+
+    // Style for consecutive bullet points
+    .markdown-bullet + .markdown-bullet {
+      margin-top: 0.25rem;
+    }
+
+    strong {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    br {
+      line-height: 1.5;
+    }
+  }
+}

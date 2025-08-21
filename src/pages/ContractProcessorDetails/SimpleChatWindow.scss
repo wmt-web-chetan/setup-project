@@ -1,0 +1,346 @@
+/* SimpleChatWindow.scss - Scoped styles with unique class names */
+
+/* Main container */
+.simple-chat-container {
+    background-color: #171717;
+  }
+  
+  /* Chat messages area */
+  .simple-chat-messages-area {
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: #171717;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: #373737;
+      border-radius: 10px;
+    }
+  
+    &::-webkit-scrollbar-thumb:hover {
+      background: #ff6d00;
+    }
+  }
+  
+  /* Date indicator in chat */
+  .simple-chat-date-indicator {
+    text-align: center;
+    margin-bottom: 16px;
+  
+    .simple-chat-date-text {
+      background-color: #373737;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 9px;
+    }
+  }
+  
+  /* Message bubbles */
+  .simple-chat-message {
+    margin-bottom: 16px;
+  
+    &.simple-chat-message-sent {
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 15px;
+  
+      .simple-chat-message-container {
+        max-width: 75%;
+      }
+  
+      .simple-chat-message-bubble:not(.simple-chat-message-file) {
+        background-color: #ff6d00;
+        color: black;
+        border-radius: 18px;
+        border-bottom-right-radius: 4px;
+        width: fit-content;
+        margin-left: auto;
+      }
+    }
+  
+    &.simple-chat-message-received {
+      display: flex;
+      justify-content: flex-start;
+  
+      .simple-chat-message-container {
+        max-width: 75%;
+      }
+  
+      .simple-chat-message-bubble:not(.simple-chat-message-file) {
+        background-color: #373737;
+        color: white;
+        border-radius: 18px;
+        border-bottom-left-radius: 4px;
+      }
+    }
+  }
+  
+  .simple-chat-message-bubble {
+    padding: 12px;
+    border-radius: 18px;
+    width: fit-content;
+    word-wrap: break-word;
+    white-space: normal;
+  }
+  
+  .simple-chat-message-sent-bubble {
+    background-color: #ff6d00;
+    color: black;
+    border-bottom-right-radius: 4px;
+  }
+  
+  .simple-chat-message-received-bubble {
+    background-color: #373737;
+    color: white;
+    border-bottom-left-radius: 4px;
+  }
+  
+  /* File message styling */
+  .simple-chat-message-file {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 109, 0, 0.3) !important;
+    min-width: 180px;
+  }
+  
+  .simple-chat-file-icon {
+    background-color: rgb(57 28 6 / 30%) !important;
+    padding: 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+  
+    .text-black {
+      font-size: 9px;
+    }
+  }
+  
+  .simple-chat-message-container {
+    min-width: 60px;
+  }
+  
+  /* Message status and time styles */
+  .simple-chat-message-time {
+    font-size: 9px;
+    color: #8c8c8c;
+  }
+  
+  .simple-chat-double-tick {
+    display: flex;
+    align-items: center;
+  
+    .text-xs {
+      font-size: 9px;
+    }
+  }
+  
+  .simple-chat-message-status {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Chat room group header info */
+  .simple-chat-header-info {
+    .simple-chat-header-name {
+      margin-bottom: 0;
+    }
+  
+    .simple-chat-member-info {
+      display: flex;
+      font-size: 10px;
+      color: #8c8c8c;
+      margin-top: 2px;
+  
+      .anticon {
+        margin-right: 4px;
+      }
+  
+      span + span {
+        margin-left: 10px;
+      }
+    }
+  
+    /* Additional style for badge text in header info */
+    .ant-badge-status-text {
+      font-size: 10px !important;
+    }
+  }
+  
+  /* Header styles */
+  .simple-chat-header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+    box-sizing: border-box;
+   
+    border-bottom: 1px solid #373737;
+  }
+  
+  /* Input area */
+  .simple-chat-input-area {
+    border-top: 1px solid #373737;
+    background-color: #1f1f1f;
+  }
+  
+  .simple-chat-input-wrapper {
+    position: relative;
+    border-radius: 999px;
+    overflow: hidden;
+    background-color: #171717;
+  }
+  
+  .simple-chat-input {
+    border-radius: 999px !important;
+    background-color: transparent !important;
+    border: none !important;
+    height: 52px !important;
+    color: #fff !important;
+  
+    &::placeholder {
+      color: #8c8c8c;
+      opacity: 0.7;
+    }
+  }
+  
+  .simple-chat-input-actions {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+  }
+  
+  .simple-chat-action-button {
+    color: #8c8c8c;
+  
+    &:hover {
+      color: #ff6d00;
+    }
+  }
+  
+  .simple-chat-send-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff6d00 !important;
+    border-color: #ff6d00 !important;
+  }
+  
+  /* Back button for mobile view */
+  .simple-chat-back-button {
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    margin-right: 8px;
+  }
+  
+  /* Meeting banner styles */
+  .simple-chat-meeting-banner {
+    background-color: #1e1e1e;
+    border: 1px solid #373737;
+    border-radius: 16px;
+    padding: 8px 16px;
+    margin: 10px 0;
+  }
+  
+  .simple-chat-meeting-avatars {
+    display: flex;
+    margin-right: 12px;
+  
+    .ant-avatar {
+      border: 2px solid #1e1e1e;
+      margin-right: -8px;
+    }
+  }
+  
+  /* Animation for new messages */
+  @keyframes simpleChatFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .simple-chat-message-new {
+    animation: simpleChatFadeIn 0.3s ease-out;
+  }
+  
+  /* Mobile view adjustments */
+  @media (max-width: 991px) {
+    .simple-chat-back-button {
+      display: block;
+    }
+  
+    .simple-chat-window {
+      width: 100%;
+    }
+    
+    .simple-chat-header {
+      height: 80px;
+      padding: 0 12px;
+    }
+    
+    .simple-chat-message-bubble {
+      padding: 10px;
+      font-size: 14px;
+    }
+  }
+  
+  /* Small screen adjustments */
+  @media (max-width: 640px) {
+    .simple-chat-header {
+      height: 70px;
+    }
+    
+    .simple-chat-input-wrapper {
+      height: 42px;
+    }
+    
+    .simple-chat-input {
+      height: 42px !important;
+      font-size: 14px !important;
+    }
+    
+    .simple-chat-action-button {
+      padding: 4px !important;
+    }
+    
+    .simple-chat-send-button {
+      height: 32px !important;
+      padding: 0 12px !important;
+      font-size: 12px !important;
+    }
+  }
+  
+  /* Chat window itself */
+  .simple-chat-window {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #1f1f1f;
+  }
+
+  .custom-upload-dragger.ant-upload-drag {
+    background-color: rgba(255, 255, 255, 0.04) !important;
+  }
+  
+  // Or if you need more specificity:
+  .modalWrapperBox .custom-upload-dragger.ant-upload-drag {
+    background-color: rgba(255, 255, 255, 0.04) !important;
+  }
+
+  .ant-upload-wrapper .ant-upload-drag {
+
+    background-color: rgba(255, 255, 255, 0.04) !important;
+
+  }

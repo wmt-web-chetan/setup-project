@@ -1,0 +1,227 @@
+/* MediaDocsLinks.scss */
+
+.media-docs-links-container {
+  background-color: var(--gray);
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 30; /* Increased z-index to ensure visibility */
+}
+
+/* Custom tabs styling */
+.custom-tabs {
+  .tab-item {
+    position: relative;
+    transition: color 0.3s ease;
+
+    &.active {
+      .ant-typography {
+        color: var(--primary);
+        font-weight: 500;
+      }
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .tab-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary);
+  }
+}
+
+/* Media grid styling */
+.media-grid {
+  .media-item {
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #212121;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &:hover {
+      opacity: 0.9;
+      cursor: pointer;
+    }
+  }
+}
+
+/* Document and link items */
+.doc-item, .link-item {
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background-color: #2a2a2a;
+    cursor: pointer;
+  }
+}
+
+/* Specific fixes for docs and links containers */
+.docs-container, .links-container {
+  padding-bottom: 48px; /* Extra padding at container level */
+  
+  .doc-item:last-child, .link-item:last-child {
+    margin-bottom: 24px; /* Extra margin for last item */
+  }
+}
+
+/* Extra fix specifically for link items */
+.links-container {
+  padding-bottom: 64px; /* Even more padding for links */
+  
+  .last-link-item {
+    margin-bottom: 48px !important; /* Force extra space after last link */
+  }
+}
+
+.doc-icon, .link-icon {
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.text-grayText {
+  color: var(--grayText);
+}
+
+/* IMPROVED Scrollbar styling */
+.tab-content {
+  scrollbar-width: thin;
+  scrollbar-color: #373737 #171717;
+  
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #171717;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #373737;
+    border-radius: 10px;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: #FF6D00;
+  }
+  
+  /* ADDED: Styling for the scrollable content */
+  &.scrollable-content {
+    padding-bottom: 16px; /* Base padding */
+    
+    /* Ensure the content-bottom-padding div has proper spacing */
+    .content-bottom-padding {
+      min-height: 16px;
+      display: block;
+    }
+    
+    /* Adjust media grid specific spacing */
+    .media-grid {
+      margin-bottom: 8px;
+    }
+    
+    /* Specific fixes for docs and links modes */
+    &:has(.docs-container), &:has(.links-container) {
+      padding-bottom: 48px;
+    }
+    
+    /* Extra padding for links tab */
+    &.links-tab-active {
+      padding-bottom: 64px !important;
+    }
+  }
+}
+
+/* Fix for last row items */
+.date-group:last-of-type {
+  margin-bottom: 24px; /* Extra space for the last group */
+}
+
+/* Fix for media grid items */
+.media-item-col:last-child {
+  margin-bottom: 8px;
+}
+
+/* Animation for entry - working in both mobile and desktop */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.media-docs-links-container {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Mobile optimizations */
+@media (max-width: 767px) {
+  .media-item-col {
+    padding: 5px !important;
+  }
+  
+  .doc-item, .link-item {
+    margin-bottom: 8px;
+  }
+  
+  /* Extra margins for docs and links on mobile */
+  .docs-container, .links-container {
+    padding-bottom: 64px !important; /* More padding on mobile */
+    
+    .doc-item:last-child, .link-item:last-child {
+      margin-bottom: 48px !important; /* Even more margin for last item on mobile */
+    }
+  }
+  
+  /* Special handling for links on mobile */
+  .links-container {
+    padding-bottom: 96px !important; /* Maximum padding for links on mobile */
+    
+    .last-link-item {
+      margin-bottom: 72px !important; /* Force extreme extra space after last link on mobile */
+    }
+  }
+  
+  .tab-content {
+    padding: 12px;
+    
+    /* Extra bottom space for mobile */
+    &.scrollable-content .content-bottom-padding {
+      min-height: 24px; /* More padding on mobile */
+    }
+  }
+}
+
+/* Ensure visibility in desktop view */
+@media (min-width: 768px) {
+  .media-docs-links-section {
+    z-index: 30 !important;
+  }
+  
+  /* ADDED: Fix for desktop scrolling */
+  .tab-content.scrollable-content {
+    padding-bottom: 20px;
+  }
+}

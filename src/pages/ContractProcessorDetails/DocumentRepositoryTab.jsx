@@ -1,0 +1,521 @@
+import {
+  DeleteOutlined,
+  SearchOutlined,
+  UserAddOutlined,
+} from "@ant-design/icons";
+import {
+  Avatar,
+  Button,
+  Col,
+  Dropdown,
+  Input,
+  Modal,
+  Row,
+  Select,
+  Typography,
+  message,
+  Spin,
+  Empty,
+} from "antd";
+import FolderIcon from "../../assets/SVGs/Folder.svg";
+import React, { useState, useEffect, useRef, useMemo } from "react";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import CreateRenameModal from "../GuidelinesMatrices/CreateRenameModal";
+import {
+  fetchFriendFolders,
+  addFriendFolder,
+  updateFriendFolderAction,
+  removeFriendFolder,
+} from "../../services/Store/DocumentRepository/actions";
+import { clearFriendFoldersState } from "../../services/Store/DocumentRepository/slice";
+
+const { Text } = Typography;
+
+// Custom debounce hook
+const useDebounce = (value, delay) => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+};
+
+// Helper function to get user avatar props
+const getUserAvatarProps = (user) => {
+  const hasProfilePhoto = user?.profile_photo_path;
+  const userName = user?.name || user?.first_name || user?.username || "U";
+
+  if (hasProfilePhoto) {
+    return {
+      src: `${import.meta.env.VITE_IMAGE_BASE_URL}/${user.profile_photo_path}`,
+    };
+  }
+
+  return {
+    style: {
+      color: "#fff",
+    },
+    children: userName.charAt(0).toUpperCase(),
+  };
+};
+
+const DocumentRepositoryTab = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const { id } = useParams(); // user_id
+  const scrollRef = useRef(null);
+
+  // Determine base route and entity type based on current route
+  const { baseRoute, entityType } = useMemo(() => {
+    if (location.pathname.includes("/loan-officer/")) {
+      return {
+        baseRoute: "/loan-officer",
+        entityType: "loan officer",
+      };
+    }
+    if (location.pathname.includes("/account-executive/")) {
+      return {
+        baseRoute: "/account-executive",
+        entityType: "account executive",
+      };
+    }
+    if (location.pathname.includes("/real-estate-agent/")) {
+      return {
+        baseRoute: "/real-estate-agent",
+        entityType: "real estate agent",
+      };
+    }
+
+    // Default to Contract Processors
+    return {
+      baseRoute: "/contract-processor",
+      entityType: "contract processor",
+    };
+  }, [location.pathname]);
+
+  // Redux state
+  const {
+    friendFolders,
+    friendFoldersLoading,
+    loadMoreLoading, // New state from Redux
+    createFriendFolderLoading,
+    updateFriendFolderLoading,
+    deleteFriendFolderLoading,
+  } = useSelector((state) => state.friendFolders);
+  const { userForEdit } = useSelector((state) => state?.usersmanagement);
+
+  // Local states for modal visibility and folder management
+  const [isCreateFolderModalVisible, setIsCreateFolderModalVisible] =
+    useState(false);
+  const [isRenameFolderModalVisible, setIsRenameFolderModalVisible] =
+    useState(false);
+  const [isDeleteFolderModalVisible, setIsDeleteFolderModalVisible] =
+    useState(false);
+  const [folderToEdit, setFolderToEdit] = useState(null);
+
+  // Search states
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
+  // Get data from Redux state
+  const folders = friendFolders?.data?.folders || [];
+  const pagination = friendFolders?.data?.pagination || {};
+  const { currentPage, totalPage, totalRecords } = pagination;
+
+  // Always fetch folders on component mount
+  useEffect(() => {
+    if (id) {
+      setIsSearching(true);
+      dispatch(
+        fetchFriendFolders({
+          user_id: id,
+          page: 1,
+          per_page: 20,
+        })
+      ).then(() => {
+        setIsSearching(false);
+      });
+    }
+  }, [dispatch, id]); // Only depend on dispatch and id for initial load
+
+  // Handle search - fetch with search term
+  useEffect(() => {
+    if (id && debouncedSearchTerm !== "") {
+      setIsSearching(true);
+      dispatch(
+        fetchFriendFolders({
+          user_id: id,
+          page: 1,
+          search: debouncedSearchTerm,
+          per_page: 20,
+        })
+      ).then(() => {
+        setIsSearching(false);
+      });
+    } else if (id && debouncedSearchTerm === "") {
+      // If search is cleared, fetch without search term
+      setIsSearching(true);
+      dispatch(
+        fetchFriendFolders({
+          user_id: id,
+          page: 1,
+          per_page: 20,
+        })
+      ).then(() => {
+        setIsSearching(false);
+      });
+    }
+  }, [debouncedSearchTerm, dispatch, id]);
+
+  // Handle infinite scroll
+  const handleScroll = (e) => {
+    if (!scrollRef.current) return;
+
+    const { scrollTop, scrollHeight, clientHeight } = e.target;
+    if (scrollHeight - scrollTop - clientHeight < 50) {
+      loadMoreData();
+    }
+  };
+
+  const loadMoreData = () => {
+    if (loadMoreLoading || currentPage >= totalPage || friendFoldersLoading)
+      return;
+
+    dispatch(
+      fetchFriendFolders({
+        user_id: id,
+        page: currentPage + 1,
+        search: searchTerm || undefined,
+        per_page: 20,
+      })
+    );
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  // Handle folder creation
+  const handleCreateFolder = (folderName) => {
+    const folderData = {
+      name: folderName,
+      first_person_user_id: userForEdit?.user?.id,
+      second_person_user_id: id,
+    };
+
+    dispatch(addFriendFolder(folderData)).then((result) => {
+      if (result?.payload?.meta?.success) {
+        setIsCreateFolderModalVisible(false);
+      }
+    });
+  };
+
+  // Handle folder rename
+  const handleRenameFolder = (folderId, newName) => {
+    const updateData = {
+      id: folderId,
+      name: newName,
+    };
+
+    dispatch(updateFriendFolderAction(updateData)).then((result) => {
+      if (result?.payload?.meta?.success) {
+        setIsRenameFolderModalVisible(false);
+        setFolderToEdit(null);
+      }
+    });
+  };
+
+  // Handle folder delete
+  const handleDeleteFolder = () => {
+    if (folderToEdit?.id) {
+      dispatch(removeFriendFolder(folderToEdit.id)).then((result) => {
+        if (result?.payload?.meta?.success) {
+          setIsDeleteFolderModalVisible(false);
+          setFolderToEdit(null);
+        }
+      });
+    }
+  };
+
+  const handleFolderClick = (folder) => {
+    dispatch(clearFriendFoldersState());
+    navigate(`${baseRoute}/detail/${id}/folder/${folder.id}`, {
+      state: { parentFolder: folder },
+    });
+  };
+
+  const handleRecentlyDeltedClick = () => {
+    dispatch(clearFriendFoldersState());
+    navigate(`${baseRoute}/detail/${id}/recently-deleted`);
+  };
+
+  const items = [
+    {
+      label: "Rename",
+      key: "rename",
+    },
+    {
+      label: <span style={{ color: "red" }}>Delete</span>,
+      key: "delete",
+    },
+  ];
+
+  const onClickMenu = async (menuItem, folder, event) => {
+    // Stop event propagation to prevent folder click
+    if (event) {
+      event.domEvent.stopPropagation();
+    }
+
+    switch (menuItem.key) {
+      case "rename":
+        setFolderToEdit(folder);
+        setIsRenameFolderModalVisible(true);
+        break;
+      case "delete":
+        setFolderToEdit(folder);
+        setIsDeleteFolderModalVisible(true);
+        break;
+      default:
+        break;
+    }
+  };
+
+  // Show loading state only for initial loading and search (not for load more)
+  const showLoading = friendFoldersLoading || isSearching;
+
+  return (
+    <div className="flex flex-col h-full">
+      {/* Fixed Header Section */}
+      <div className="flex-none">
+        <div className="flex items-center mt-0">
+          <div className="text-2xl font-normal">
+            {" "}
+            {totalRecords === 1 ? "Client" : "Clients"}
+          </div>
+          <span className="mx-3 text-grayText">&#8226;</span>
+          <div className="bg-primaryOpacity px-2 text-primary rounded-lg">
+            {totalRecords || 0}
+          </div>
+        </div>
+
+        <Row gutter={[10, 10]} className="mt-3">
+          <Col xs={24} md={24} lg={24} xl={12}>
+            <Input
+              prefix={<SearchOutlined className="text-grayText mr-2" />}
+              placeholder="Search for client name"
+              className="px-3 py-2 rounded-full lg:w-3/4"
+              value={searchTerm}
+              onChange={handleSearchChange}
+              allowClear
+            />
+          </Col>
+          <Col xs={24} md={24} lg={24} xl={12} className="">
+            <div className="w-full flex gap-3 mt-3 md:mt-0 justify-end">
+              <Button
+                icon={<DeleteOutlined className="text-red-600" />}
+                className="rounded-3xl py-5"
+                onClick={() => handleRecentlyDeltedClick()}
+              >
+                Recently Deleted
+              </Button>
+              <Button
+                type="primary"
+                icon={<i className="icon-add" />}
+                className="rounded-3xl py-5"
+                onClick={() => setIsCreateFolderModalVisible(true)}
+              >
+                Create Client
+              </Button>
+            </div>
+          </Col>
+        </Row>
+      </div>
+
+      {/* Scrollable Folders Section */}
+      <div
+        ref={scrollRef}
+        className="flex-grow overflow-y-auto mt-8"
+        style={{ height: "50vh" }}
+        onScroll={handleScroll}
+      >
+        {showLoading ? (
+          <div className="flex justify-center items-center h-full">
+            <Spin size="large" />
+          </div>
+        ) : folders.length > 0 ? (
+          <div className="flex gap-5 flex-wrap">
+            {folders.map((folder) => (
+              <div key={folder.id} className="w-32 md:w-40">
+                <div
+                  className="folder-container cursor-pointer h-full"
+                  onClick={(e) => {
+                    // Don't trigger folder click if clicked on dropdown or its menu
+                    if (
+                      e.target.closest(".folder-menu") ||
+                      e.target.closest(".ant-dropdown")
+                    ) {
+                      e.stopPropagation();
+                      return;
+                    }
+                    handleFolderClick(folder);
+                  }}
+                >
+                  <div className="relative w-full mb-2">
+                    <div className="absolute top-2 right-4 bg-black bg-opacity-40 w-6 h-6 flex items-center justify-center rounded-full text-xs z-10 folder-menu">
+                      <Dropdown
+                        menu={{
+                          items,
+                          onClick: (menuItem, e) =>
+                            onClickMenu(menuItem, folder, e),
+                        }}
+                        trigger={["click"]}
+                        overlayStyle={{ minWidth: "150px" }}
+                        dropdownRender={(menu) => (
+                          <div>{React.cloneElement(menu)}</div>
+                        )}
+                      >
+                        <span className="hover:text-primary cursor-pointer">
+                          <i className="icon-more-options-vertical text-white"></i>
+                        </span>
+                      </Dropdown>
+                    </div>
+                    <div
+                      className="absolute bottom-2 left-3 lg:left-2 xl:left-3 px-2 bg-black bg-opacity-40 
+  flex items-center justify-center rounded-2xl text-sm z-10 ml-2"
+                    >
+                      {folder?.child_folders_count || 0} folder
+                      {(folder?.child_folders_count || 0) !== 1 ? "s" : ""}
+                    </div>
+                    <div
+                      className="absolute bottom-2 right-2 lg:right-2 px-2 
+                      flex items-center justify-center rounded-2xl text-sm z-10"
+                    >
+                      <Avatar
+                        size={25}
+                        {...getUserAvatarProps(folder?.first_person_user)}
+                      />
+                    </div>
+                    <div className="w-full flex justify-center items-center relative">
+                      <img
+                        src={FolderIcon}
+                        alt={`${folder?.name} folder`}
+                        className="w-full object-contain"
+                        style={{ maxHeight: "120px" }}
+                      />
+                    </div>
+                  </div>
+                  <div className="text-center px-1">
+                    <Text
+                      className="text-white text-sm line-clamp-2 hover:text-primary"
+                      title={folder?.name}
+                    >
+                      {folder?.name || "Unnamed Folder"}
+                    </Text>
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            {/* Loading indicator for infinite scroll - only at the bottom */}
+            {loadMoreLoading && (
+              <div className="w-full flex justify-center my-4">
+                <Spin />
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="flex justify-center items-center h-full">
+            <Empty
+              description={
+                <span className="text-grayText">No folders found</span>
+              }
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Add CreateRenameModal component */}
+      <CreateRenameModal
+        isCreateFolderModalVisible={isCreateFolderModalVisible}
+        setIsCreateFolderModalVisible={setIsCreateFolderModalVisible}
+        isRenameFolderModalVisible={isRenameFolderModalVisible}
+        setIsRenameFolderModalVisible={setIsRenameFolderModalVisible}
+        folderToRename={folderToEdit}
+        onCreateFolder={handleCreateFolder}
+        onRenameFolder={handleRenameFolder}
+        createLoading={createFriendFolderLoading}
+        renameLoading={updateFriendFolderLoading}
+        // Custom props for client-specific text
+        createTitle="Create Client"
+        renameTitle="Rename Client"
+        labelText="Client Name"
+        placeholder="Enter Client Name"
+        requiredMessage="Please enter a client name"
+        maxLengthMessage="client name cannot exceed 25 characters"
+      />
+
+      {/* Delete Confirmation Modal */}
+      <Modal
+        title="Delete Folder"
+        open={isDeleteFolderModalVisible}
+        onCancel={() => setIsDeleteFolderModalVisible(false)}
+        footer={null}
+        centered
+        className="modalWrapperBox"
+        closeIcon={
+          <Button
+            shape="circle"
+            icon={<i className="icon-close before:!m-0 text-sm" />}
+          />
+        }
+        maskClosable={!deleteFriendFolderLoading}
+      >
+        <div className="border-t-2 border-solid border-[#373737] mt-5">
+          <Row gutter={16} className="">
+            <div className="w-full pt-5 flex items-center justify-center pb-5">
+              <Text className="text-base font-normal text-grayText text-center">
+                Are you sure you want to delete {folderToEdit?.name} folder?
+              </Text>
+            </div>
+
+            <Col span={12}>
+              <Button
+                block
+                size="large"
+                onClick={() => setIsDeleteFolderModalVisible(false)}
+                disabled={deleteFriendFolderLoading}
+              >
+                Cancel
+              </Button>
+            </Col>
+            <Col span={12}>
+              <Button
+                block
+                type="primary"
+                size="large"
+                danger
+                onClick={handleDeleteFolder}
+                loading={deleteFriendFolderLoading}
+              >
+                Delete
+              </Button>
+            </Col>
+          </Row>
+        </div>
+      </Modal>
+    </div>
+  );
+};
+
+export default DocumentRepositoryTab;

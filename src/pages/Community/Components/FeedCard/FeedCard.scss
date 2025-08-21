@@ -1,0 +1,21 @@
+.custom-dots {
+    bottom: 20px;
+}
+// .custom-dots li button {
+//     background: white;
+//     opacity: 0.5;
+// }
+// .custom-dots li.slick-active button {
+//     background: white;
+//     opacity: 1;
+// }
+.carousel-item-container {
+    height: 70vh;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: #121212;
+}
+.media-modal .ant-modal-content {
+    background: #121212;
+}

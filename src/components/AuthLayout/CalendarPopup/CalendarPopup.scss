@@ -1,0 +1,513 @@
+
+/* FullCalendar custom styles */
+.calendar-container {
+  height: calc(100% - 60px); /* Subtract header height */
+}
+
+/* Calendar background */
+.fc {
+  background-color: transparent;
+  color: white;
+  height: 100%;
+}
+
+/* Calendar header */
+.fc-col-header {
+  background-color: #171717;
+}
+
+.fc-col-header-cell {
+  background-color: #171717;
+  color: #9CA3AF;
+  font-weight: normal;
+  border-color: #373737 !important;
+  padding: 8px 0 !important;
+}
+
+/* Day cells */
+.fc-daygrid-day, .fc-timegrid-slot, .fc-timegrid-col {
+  background-color: #171717;
+  border-color: #373737 !important;
+}
+
+.fc-day {
+  background-color: #171717;
+}
+
+.fc-day-other {
+  background-color: #171717;
+  opacity: 0.7;
+}
+
+.fc-day-today {
+  background-color: rgba(255, 109, 0, 0.1) !important;
+}
+
+/* Event styling */
+.fc-event {
+  border-radius: 4px;
+  padding: 2px;
+  margin-bottom: 2px;
+  border-width: 0 !important;
+}
+
+.fc-event-main {
+  padding: 2px;
+}
+
+.fc-event-time {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.fc-event-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Time grid */
+.fc-timegrid-slot {
+  height: 40px !important;
+}
+
+.fc-timegrid-slot-label {
+  color: #9CA3AF;
+}
+
+.fc-timegrid-axis {
+  color: #9CA3AF;
+}
+
+.fc-scrollgrid {
+  border-color: #373737 !important;
+}
+
+.fc-scrollgrid-section > td {
+  border-color: #373737 !important;
+}
+
+/* Week view styles */
+.fc-timegrid-event {
+  border-radius: 4px;
+  padding: 2px;
+}
+
+/* Month view "more" link */
+.fc-daygrid-more-link {
+  color: #FF6D00 !important;
+  font-weight: 500;
+}
+
+/* Now indicator */
+.fc-timegrid-now-indicator-line {
+  border-color: #FF6D00 !important;
+}
+
+.fc-timegrid-now-indicator-arrow {
+  border-color: #FF6D00 !important;
+  color: #FF6D00 !important;
+}
+
+/* Fix for scrollbar in Firefox and other browsers */
+.fc-scroller {
+  scrollbar-width: thin;
+  scrollbar-color: #373737 #171717;
+}
+
+.fc-scroller::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.fc-scroller::-webkit-scrollbar-track {
+  background: #171717;
+}
+
+.fc-scroller::-webkit-scrollbar-thumb {
+  background: #373737;
+  border-radius: 3px;
+}
+
+.fc-scroller::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Highlight today column in month view */
+.fc-day-today .fc-daygrid-day-number {
+  color: #FF6D00;
+  font-weight: bold;
+}
+
+/* Custom day cell styling */
+.custom-day-cell {
+  min-height: 120px !important;
+}
+
+/* All day slot */
+.fc-daygrid-day-frame {
+  min-height: 120px;
+}
+
+/* Modal styling */
+.antd-modal-dark .ant-modal-content {
+  background-color: #171717 !important;
+  color: white;
+}
+
+.antd-modal-dark .ant-modal-header {
+  background-color: #171717 !important;
+  border-bottom: 1px solid #373737 !important;
+}
+
+.antd-modal-dark .ant-modal-title {
+  color: white !important;
+}
+
+.antd-modal-dark .ant-modal-close {
+  color: white !important;
+}
+
+.antd-modal-dark .ant-modal-footer {
+  border-top: 1px solid #373737 !important;
+}
+
+/* Fix for event content */
+.fc-event-content {
+  white-space: normal !important;
+}
+
+/* Make sure events don't get cut off */
+.fc-daygrid-event-harness {
+  margin-bottom: 4px;
+}
+
+/* General UI elements */
+.ant-select-dropdown {
+  background-color: #171717 !important;
+  color: white !important;
+}
+
+.ant-select-item {
+  color: white !important;
+}
+
+.ant-select-item-option-selected {
+  background-color: #373737 !important;
+}
+
+.ant-picker-panel-container {
+  background-color: #171717 !important;
+}
+
+.ant-picker-header {
+  color: white !important;
+  border-color: #373737 !important;
+}
+
+.ant-picker-header button {
+  color: white !important;
+}
+
+.ant-picker-content th {
+  color: #9CA3AF !important;
+}
+
+.ant-picker-content td {
+  color: white !important;
+}
+
+.ant-picker-cell-in-view {
+  color: white !important;
+}
+
+.ant-picker-cell-selected .ant-picker-cell-inner {
+  background-color: #FF6D00 !important;
+}
+
+.ant-picker-time-panel-column > li.ant-picker-time-panel-cell-selected .ant-picker-time-panel-cell-inner {
+  background-color: #FF6D00 !important;
+}
+
+.ant-picker-time-panel-column > li .ant-picker-time-panel-cell-inner {
+  color: white !important;
+}
+
+/* Remove the required mark in ant design form */
+.ant-form-item-required::before {
+  display: none !important;
+}
+
+.calendar-box {
+  margin-top: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* FullCalendar custom styles */
+.fc {
+  background-color: transparent;
+  color: white;
+}
+
+/* Calendar header */
+.fc-col-header {
+  background-color: #171717;
+}
+
+.fc-col-header-cell {
+  background-color: #171717;
+  color: #9CA3AF;
+  font-weight: normal;
+  border-color: #373737 !important;
+  padding: 8px 0 !important;
+}
+
+/* Day cells */
+.fc-daygrid-day, .fc-timegrid-slot, .fc-timegrid-col {
+  background-color: #171717;
+  border-color: #373737 !important;
+}
+
+.fc-day {
+  background-color: #171717;
+}
+
+.fc-day-other {
+  background-color: #171717;
+  opacity: 0.7;
+}
+
+.fc-day-today {
+  background-color: rgba(255, 109, 0, 0.1) !important;
+}
+
+/* Event styling */
+.fc-event {
+  border-radius: 4px;
+  padding: 2px;
+  margin-bottom: 2px;
+  border-width: 0 !important;
+}
+
+.fc-event-main {
+  padding: 2px;
+}
+
+.fc-event-time {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.fc-event-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Custom day cell */
+.custom-day-cell {
+  min-height: 120px !important;
+}
+
+/* Time grid */
+.fc-timegrid-slot {
+  height: 40px !important;
+}
+
+.fc-timegrid-slot-label {
+  color: #9CA3AF;
+}
+
+.fc-timegrid-axis {
+  color: #9CA3AF;
+}
+
+.fc-scrollgrid {
+  border-color: #373737 !important;
+}
+
+.fc-scrollgrid-section > td {
+  border-color: #373737 !important;
+}
+
+/* Week view styles */
+.fc-timegrid-event {
+  border-radius: 4px;
+  padding: 2px;
+}
+
+/* Month view "more" link */
+.fc-daygrid-more-link {
+  color: #FF6D00 !important;
+  font-weight: 500;
+}
+
+/* Now indicator */
+.fc-timegrid-now-indicator-line {
+  border-color: #FF6D00 !important;
+}
+
+.fc-timegrid-now-indicator-arrow {
+  border-color: #FF6D00 !important;
+  color: #FF6D00 !important;
+}
+
+/* Fix for scrollbar */
+.fc-scroller {
+  scrollbar-width: thin;
+  scrollbar-color: #373737 #171717;
+}
+
+.fc-scroller::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.fc-scroller::-webkit-scrollbar-track {
+  background: #171717;
+}
+
+.fc-scroller::-webkit-scrollbar-thumb {
+  background: #373737;
+  border-radius: 3px;
+}
+
+.fc-scroller::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Highlight today column in month view */
+.fc-day-today .fc-daygrid-day-number {
+  color: #FF6D00;
+  font-weight: bold;
+}
+
+/* All day slot */
+.fc-daygrid-day-frame {
+  min-height: 120px;
+}
+
+/* Remove required mark in form items */
+.ant-form-item-required::before {
+  display: none !important;
+}
+
+/* Mini calendar styling */
+.mini-calendar .ant-col {
+  padding: 0;
+}
+
+.mini-calendar .cursor-pointer:hover {
+  background-color: rgba(255, 109, 0, 0.2);
+  transition: background-color 0.2s ease;
+}
+
+/* Ant Design Modal dark theme */
+.antd-modal-dark .ant-modal-content {
+  background-color: #171717 !important;
+  color: white;
+}
+
+.antd-modal-dark .ant-modal-header {
+  background-color: #171717 !important;
+  border-bottom: 1px solid #373737 !important;
+}
+
+.antd-modal-dark .ant-modal-title {
+  color: white !important;
+}
+
+.antd-modal-dark .ant-modal-close {
+  color: white !important;
+}
+
+.antd-modal-dark .ant-modal-footer {
+  border-top: 1px solid #373737 !important;
+}
+
+/* Ant Design Components styling */
+.ant-select-dropdown {
+  background-color: #171717 !important;
+}
+
+.ant-select-item {
+  color: white !important;
+}
+
+.ant-select-item-option-selected {
+  background-color: #373737 !important;
+}
+
+.ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+  background-color: #2A2A2A !important;
+}
+
+.ant-picker-panel-container {
+  background-color: #171717 !important;
+}
+
+.ant-picker-header {
+  color: white !important;
+  border-color: #373737 !important;
+}
+
+.ant-picker-header button {
+  color: white !important;
+}
+
+.ant-picker-content th {
+  color: #9CA3AF !important;
+}
+
+.ant-picker-content td {
+  color: white !important;
+}
+
+.ant-picker-cell-in-view {
+  color: white !important;
+}
+
+.ant-picker-cell-selected .ant-picker-cell-inner {
+  background-color: #FF6D00 !important;
+}
+
+.ant-picker-time-panel-column > li.ant-picker-time-panel-cell-selected .ant-picker-time-panel-cell-inner {
+  background-color: #FF6D00 !important;
+}
+
+.ant-picker-time-panel-column > li .ant-picker-time-panel-cell-inner {
+  color: white !important;
+}
+
+/* Popconfirm styling */
+.ant-popconfirm-buttons .ant-btn-primary {
+  background-color: #FF6D00;
+}
+
+.ant-popconfirm-message-title {
+  color: white;
+}
+
+.ant-popconfirm-buttons .ant-btn-default {
+  color: white;
+  border-color: #373737;
+}
+
+/* Make calendar responsive */
+@media (max-width: 768px) {
+  .fc-header-toolbar {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .fc-toolbar-chunk {
+    margin-bottom: 8px;
+  }
+  
+  .fc-daygrid-day-number {
+    font-size: 0.75rem;
+  }
+  
+  .fc-col-header-cell-cushion {
+    font-size: 0.75rem;
+  }
+}
